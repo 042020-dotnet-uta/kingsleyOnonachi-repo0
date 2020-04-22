@@ -91,6 +91,7 @@ namespace rps
         {
             if (player1.hand == player2.hand)
             {
+                Console.WriteLine("We have a tie");
                 ties++;
             }
             else if ((player1.hand == "rock" && player2.hand == "scissors") || (player1.hand == "scissors" && player2.hand == "paper") || (player1.hand == "paper" && player2.hand == "rock"))

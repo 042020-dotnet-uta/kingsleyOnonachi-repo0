@@ -5,16 +5,10 @@ namespace rps
 {
     class Program
     {
-
-
-
         static void Main(string[] args)
         {
-
             Game rps = new Game();
             rps.StartGame();
-
-            // endgame
         }
     }
 
@@ -45,9 +39,8 @@ namespace rps
             player2.playerName = Console.ReadLine();
 
 
-            Console.WriteLine($"Player1's name is:  {player1.playerName}");
-            Console.WriteLine($"Player2's name is:  {player2.playerName}");
-
+            Console.WriteLine($"Player1's name is: {player1.playerName}");
+            Console.WriteLine($"Player2's name is: {player2.playerName}");
 
             // start while loop that will keep running until either player1 or player2's score value is => 2
             while (player1.score < 2 && player2.score < 2)
@@ -59,8 +52,8 @@ namespace rps
                 // print out result of the players, which hand they drew, which player won or state that there's a tie and what the
                 // current round is
                 Console.WriteLine($"Starting Round {rounds}");
-                Console.WriteLine($"Player {player1.playerName} choose  {player1.hand}");
-                Console.WriteLine($"Player {player2.playerName} choose  {player2.hand}");
+                Console.WriteLine($"Player {player1.playerName} chose {player1.hand}");
+                Console.WriteLine($"Player {player2.playerName} chose {player2.hand}");
 
                 // compare
                 compare();
@@ -86,6 +79,7 @@ namespace rps
         {
             // create an array of strings that will hold the values of "Rock", "Paper", "Scissors" to compare
             // and decide winner
+            // code modified from https://www.tutorialspoint.com/how-to-select-a-random-element-from-a-chash-list
             var random = new Random();
             var list = new List<string> { "rock", "paper", "scissors" };
             int index = random.Next(list.Count);

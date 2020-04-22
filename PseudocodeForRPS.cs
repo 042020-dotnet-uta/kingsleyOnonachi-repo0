@@ -11,23 +11,8 @@ namespace rps
         static void Main(string[] args)
         {
 
-
             Game rps = new Game();
-
             rps.StartGame();
-
-
-
-
-            // compare the player's value, check if there's a tie, if so give no score, increment round, restart the loop
-            // else give point to winner and store point to Player's score property
-
-            // print out result of the players, which hand they drew, which player won or state that there's a tie and what the
-            // current round is
-
-            // end of loop logic, at this point a player should have 2 points
-
-
 
             // endgame
         }

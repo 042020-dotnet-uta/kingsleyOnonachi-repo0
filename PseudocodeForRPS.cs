@@ -118,3 +118,4 @@ namespace rps
         public string hand = "EMPTY";
     }
 }
+

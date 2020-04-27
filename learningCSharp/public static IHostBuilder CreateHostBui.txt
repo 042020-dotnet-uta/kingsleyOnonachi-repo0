@@ -1,0 +1,11 @@
+public static IHostBuilder CreateHostBuilder(stringg[] args) =>
+    Host.CreateDefaultBuilder(args)
+        .ConfigureLogging(logging =>
+        {
+            logging.ClearProviders();
+            logging.AddConsole();
+        })
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });

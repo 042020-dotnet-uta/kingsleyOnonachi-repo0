@@ -2,16 +2,28 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace RPS_Game
 {
     class Round
     {
         private Player winner;
         //private string p1Chosen;
-       // private string p2chosen;
-        public Player p1;
-        public Player p2;
-        private int rounds;
+        //private string p2chosen;
+        private Player p1;
+        private Player p2;
+
+        public Round(Player p1, Player p2)
+        {
+            this.P1 = p1;
+            this.P2 = p2;
+
+        }
+        public Player Winner { get => winner; set => winner = value; }
+        internal Player P1 { get => p1; set => p1 = value; }
+        internal Player P2 { get => p2; set => p2 = value; }
+
+        public static int rounds;
 
        public char MakeAChoice()
         { 
@@ -25,40 +37,38 @@ namespace RPS_Game
             
             return h;
         }
-        //public string p1Choice { 
-         //   get => p1Chosen;
-           // set => p1Chosen = MakeAChoice();
-           // }
-        //public string p2Choice { get => p2chosen; set => p2Choice = MakeAChoice(); }
-        public Player Winner { get => winner; }
-        public Player rules()
-        {
-            
-            if (p1Choice == p2Choice)
-            {
-                Console.WriteLine("We have a tie");
-                winner = null;
-                return winner;
-            }
-            else if ((p1Choice == "R" && p2Choice == "S") || (p1Choice == "S" && p2Choice == "P") || (p1Choice == "P" && p2Choice == "R"))
-            {
-                winner = 
-                Console.WriteLine($"Player {player1.playerName} wins.");
-            }
-            else
-            {
-                player2.score++;
-                Console.WriteLine($"Player {player2.playerName} wins.");
-            }
-            set => value; 
-        }
 
-       public Round(Player p1, Player p2)
+        public string randomChoice()
+        {
+            // create an array of strings that will hold the values of "Rock", "Paper", "Scissors" to compare
+            // and decide winner
+
+            var random = new Random();
+            var list = new List<string> { "Rock", "Paper", "Scissor" };
+            int index = random.Next(3);
+            return list[index];
+
+
+        }
+       
+
+            /// <summary>
+            /// This where the information about the round are display with the players names
+            /// </summary>
+            /// <param name="p1"></param>
+            /// <param name="p2"></param>
+      
+
+        public void roundPlayer()
         {
             rounds += 1;
-            Console.WriteLine($"Round {rounds} | {p1.Name} VS {p2.Name}");
-            p1.playerHand = MakeAChoice();
-
+            Console.WriteLine($"Round {rounds} | {P1.Name} VS {P2.Name}");
+            //p1.playerHand = MakeAChoice();
+            //p2.playerHand = MakeAChoice();
+            P1.PlayerHand = randomChoice();
+            Console.WriteLine(P1.PlayerHand);
+            P2.PlayerHand = randomChoice();
+            Console.WriteLine(P2.PlayerHand);
         }
     }
 

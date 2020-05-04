@@ -162,7 +162,7 @@ namespace CodingChallengeWeek3
 
                 }
                 string combindedString = string.Join(",", shuffleword);
-                 Console.WriteLine(combindedString);
+                 Console.WriteLine($"{firstlist} + {secondlist} = {combindedString}");
                 
             }
             MenuSelect();

@@ -9,11 +9,11 @@ namespace RPS_Game
 {
     public class GamePlay
     {
-        private static readonly Player p1 = new Player();
-        private static readonly Player p2 = new Player();
-        private static Game game = new Game();
-        private static readonly int p1Wins; // win count for player 1
-        private static readonly int p2Wins; // win count for player 2
+        private Player p1 = new Player();
+        private Player p2 = new Player();
+        private static Game game;
+        private  int p1Wins; // win count for player 1
+        private  int p2Wins; // win count for player 2
         //private static int ties = 0;
         
         //install the logger for a console app.
@@ -49,14 +49,18 @@ namespace RPS_Game
         public void RunGame()
         {
             //create the game with players
-            game = new Game(p1,p2);
 
+            game = new Game();
             //run rounds till a player has 2 wins. 
-            while (p1.wins < 2 && p2.wins < 2)
+            while (p1Wins < 2 && p2Wins < 2)
             {
                 
-                Round r1 = RunRound();
+                Round r1 = new Round { 
+                P1 = p1,
+                P2 = p2};
+                r1.RoundPlayer();
                 Console.WriteLine("The winner is ",r1.Winner);
+                
                 game.Rounds.Add(r1);
             }
 
@@ -70,9 +74,9 @@ namespace RPS_Game
         {
 
             //create a round to hold the data for this round
-            Console.WriteLine(p1.wins + p2.wins);
-            Round oneRound = new Round(p1, p2);
-            oneRound.roundPlayer();
+            //Console.WriteLine(p1.wins + p2.wins);
+            Round oneRound = new Round();
+            oneRound.RoundPlayer();
             return DetermineRoundWinner(oneRound);
 
         }
@@ -88,13 +92,14 @@ namespace RPS_Game
         private Round DetermineRoundWinner(Round oneRound)
         {
             //int win = p1rand - p2rand + 2;//determine the winner
-            if (p1.PlayerHand == p2.PlayerHand)
+             
+            if (oneRound.P1.PlayerHand == oneRound.P2.PlayerHand)
             {
                 Console.WriteLine("We have a tie");
                  oneRound.Winner = null;
                  return oneRound;
             }
-            else if ((p1.PlayerHand == "Rock" && p2.PlayerHand == "Scissor") || (p1.PlayerHand == "Scissor" && p2.PlayerHand == "Paper") || (p1.PlayerHand == "Paper" && p2.PlayerHand == "Rock"))
+            else if ((oneRound.P1.PlayerHand == "Rock" && oneRound.P2.PlayerHand == "Scissor") || (oneRound.P1.PlayerHand == "Scissor" && oneRound.P2.PlayerHand == "Paper") || (p1.PlayerHand == "Paper" && oneRound.P2.PlayerHand == "Rock"))
             {
                 oneRound.Winner = p1;
                 p1.wins += 1;
@@ -121,13 +126,13 @@ namespace RPS_Game
             if (game.Winner == p1)
             {
                 game.Winner = game.Player1;  //assign the winner to the winners spot in the game
-                game.Player1.wins++;     //increment the winners wins
-                game.Player2.losses++;       //increment the loosers losses
+                p1Wins = game.Player1.wins;     //increment the winners wins
+                //increment the loosers losses
             }
             else if (game.Winner == p2)
             {
                 game.Winner = game.Player2;  //assign the winner to the winners spot in the game
-                game.Player2.wins++;     //increment the winners wins
+                p2Wins = game.Player2.wins;     //increment the winners wins
                 game.Player1.losses++;       //increment the loosers losses
             }
             else
@@ -151,15 +156,15 @@ namespace RPS_Game
             {
                 if (round.Winner == null) 
                 {
-                    //Console.WriteLine($"In round {r}, there was no winner because {game.Player1.Name} chose {round.P1.PlayerHand} and {game.Player2.Name} chose {round.P2.PlayerHand}.");
+                    Console.WriteLine($"In round {r}, there was no winner because {game.Player1.Name} chose {round.P1.PlayerHand} and {game.Player2.Name} chose {round.P2.PlayerHand}.");
                 }
                 else if (round.Winner != null && round.Winner == round.P1)
                 {
-                    //Console.WriteLine($"In round {r}, {round.Winner.Name} won by choosing {round.P1.PlayerHand} over {game.Player2.Name}'s {round.P2.PlayerHand}.");
+                    Console.WriteLine($"In round {r}, {round.Winner.Name} won by choosing {round.P1.PlayerHand} over {game.Player2.Name}'s {round.P2.PlayerHand}.");
                 }
                 else
                 {
-                    //Console.WriteLine($"In round {r}, {round.Winner.Name} won by choosing {round.P2} over {game.Player1.Name}'s {round.P1.PlayerHand}.");
+                    Console.WriteLine($"In round {r}, {round.Winner.Name} won by choosing {round.P2} over {game.Player1.Name}'s {round.P1.PlayerHand}.");
                 }
                 r++;
             }

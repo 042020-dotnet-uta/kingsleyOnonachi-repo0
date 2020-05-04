@@ -1,0 +1,26 @@
+use revaturedb;
+
+INSERT INTO `revaturedb`.`customers`
+(`customerId`,`firstName`,`lastName`,`streetAddress`,`cityAddress`,`stateAddress`,`countryAddress`,`userName`,`pass_word`)
+VALUES(1,'Maria','Anders',‘1232JohnsonAve’, ‘lostCity’,'Berlin','Germany','Anders','030-0074321');
+INSERT INTO customers ('customerId','firstName','''lastName''','streetAddress','cityAddress','stateAddress','countryAddress','userName','pass_word','regDate')
+VALUES(2,'Ana','Trujillo',‘Johnson Ave 1232 ’, ‘lost City’,'México D.F.','Mexico','Trujillo','(5) 555-4729')
+INSERT INTO customers ('customerId','firstName','''lastName''','streetAddress','cityAddress','stateAddress','countryAddress','userName','pass_word','regDate')
+VALUES(3,'Antonio','Moreno',‘1232 Johnson Ave’, ‘lost City’,'México D.F.','Mexico','Moreno','(5) 555-3932')
+INSERT INTO customers ('customerId','firstName','''lastName''','streetAddress','cityAddress','stateAddress','countryAddress','userName','pass_word','regDate')VALUES(4,'Thomas','Hardy',‘1232 Johnson Ave’, ‘lost City’,'London','UK','Hardy','(171) 555-7788')
+INSERT INTO customers ('customerId','firstName','''lastName''','streetAddress','cityAddress','stateAddress','countryAddress','userName','pass_word','regDate')VALUES(5,'Christina','Berglund',‘1232 Johnson Ave’, ‘lost City’,'Luleå','Sweden','Berglund','0921-12 34 65')
+INSERT INTO customers ('customerId','firstName','lastName','streetAddress','cityAddress','stateAddress','countryAddress','userName','pass_word','regDate')VALUES(6,'Hanna','Moos',‘1232 Johnson Ave’, ‘lost City’'Mannheim','Germany','Moos','0621-08460');
+INSERT INTO customers ('customerId','firstName','lastName','streetAddress','cityAddress','stateAddress','countryAddress','userName','pass_word','regDate')VALUES(7,'Frédérique','Citeaux',‘1232 Johnson Ave’, ‘lost City’,'Strasbourg','France','88.60.15.31')
+INSERT INTO Customers ('customerId','firstName','lastName','streetAddress','cityAddress','stateAddress','countryAddress','userName','pass_word','regDate'streetAddress)VALUES(8,'Martín','Sommer',‘1232 Johnson Ave’, ‘lost City’,'Madrid','Spain','(91) 555 22 82')
+INSERT INTO Customers ('customerId'],'firstName',['lastName',['streetAddress'],['cityAddress'],['stateAddress'],['countryAddress'],[userName],[pass_word],[regDate])VALUES(9,'Laurence','Lebihan',‘1232 Johnson Ave’, ‘lost City’,'Marseille','France','91.24.45.40')
+INSERT INTO [Customer] (['customerId'],['firstName'],['lastName'],['streetAddress'],['cityAddress'],['stateAddress'],['countryAddress'],[userName],[pass_word],[regDate])VALUES(10,'Elizabeth','Lincoln',‘1232 Johnson Ave’, ‘lost City’,'Tsawassen','Canada','(604) 555-4729')
+INSERT INTO [Customer] (['customerId'],['firstName'],['lastName'],['streetAddress'],['cityAddress'],['stateAddress'],['countryAddress'],[userName],[pass_word],[regDate])VALUES(11,'Victoria','Ashworth',‘1232 Johnson Ave’, ‘lost City’,'London','UK','(171) 555-1212')
+INSERT INTO [Customer] (['customerId'],['firstName'],['lastName'],['streetAddress'],['cityAddress'],['stateAddress'],['countryAddress'],[userName],[pass_word],[regDate])VALUES(12,'Patricio','Simpson',‘1232 Johnson Ave’, ‘lost City’,'Buenos Aires','Argentina','(1) 135-5555')
+INSERT INTO [Customer] (['customerId'],['firstName'],['lastName'],['streetAddress'],['cityAddress'],['stateAddress'],['countryAddress'],[userName],[pass_word],[regDate])VALUES(13,'Francisco','Chang',‘1232 Johnson Ave’, ‘lost City’,'México D.F.','Mexico','(5) 555-3392')
+INSERT INTO [Customer] (['customerId'],['firstName'],['lastName'],['streetAddress'],['cityAddress'],['stateAddress'],['countryAddress'],[userName],[pass_word],[regDate])VALUES(14,'Yang','Wang',‘1232 Johnson Ave’, ‘lost City’,'Bern','Switzerland','0452-076545')
+INSERT INTO [Customer] (['customerId'],['firstName'],['lastName'],['streetAddress'],['cityAddress'],['stateAddress'],['countryAddress'],[userName],[pass_word],[regDate])VALUES(15,'Pedro','Afonso',‘1232 Johnson Ave’, ‘lost City’,'Sao Paulo','Brazil','(11) 555-7647')
+INSERT INTO [Customer] (['customerId'],['firstName'],['lastName'],['streetAddress'],['cityAddress'],['stateAddress'],['countryAddress'],[userName],[pass_word],[regDate])VALUES(16,'Elizabeth','Brown',‘1232 Johnson Ave’, ‘lost City’,'London','UK','(171) 555-2282')
+INSERT INTO [Customer] (['customerId'],['firstName'],['lastName'],['streetAddress'],['cityAddress'],['stateAddress'],['countryAddress'],[userName],[pass_word],[regDate])VALUES(17,'Sven','Ottlieb',‘1232 Johnson Ave’, ‘lost City’,'Aachen','Germany','0241-039123')
+INSERT INTO [Customer] (['customerId'],['firstName'],['lastName'],['streetAddress'],['cityAddress'],['stateAddress'],['countryAddress'],[userName],[pass_word],[regDate])VALUES(18,'Janine','Labrune',‘1232 Johnson Ave’, ‘lost City’,'Nantes','France','40.67.88.88')
+INSERT INTO [Customer] (['customerId'],['firstName'],['lastName'],['streetAddress'],['cityAddress'],['stateAddress'],['countryAddress'],[userName],[pass_word],[regDate])VALUES(19,'Ann','Devon',‘1232 Johnson Ave’, ‘lost City’,'London','UK','(171) 555-0297')
+INSERT INTO [Customer] (['customerId'],['firstName'],['lastName'],['streetAddress'],['cityAddress'],['stateAddress'],['countryAddress'],[userName],[pass_word],[regDate])VALUES(20,'Roland','Mendel',‘1232 Johnson Ave’, ‘lost City’,'Graz','Austria','7675-3425')

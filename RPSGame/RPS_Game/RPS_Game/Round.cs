@@ -13,15 +13,9 @@ namespace RPS_Game
         private Player p1;
         private Player p2;
 
-        public Round(Player p1, Player p2)
-        {
-            this.P1 = p1;
-            this.P2 = p2;
-
-        }
         public Player Winner { get => winner; set => winner = value; }
-        internal Player P1 { get => p1; set => p1 = value; }
-        internal Player P2 { get => p2; set => p2 = value; }
+        public Player P1 { get => p1; set => p1 = value; }
+        public Player P2 { get => p2; set => p2 = value; }
 
         public static int rounds;
 
@@ -59,7 +53,7 @@ namespace RPS_Game
             /// <param name="p2"></param>
       
 
-        public void roundPlayer()
+        public void RoundPlayer()
         {
             rounds += 1;
             Console.WriteLine($"Round {rounds} | {P1.Name} VS {P2.Name}");

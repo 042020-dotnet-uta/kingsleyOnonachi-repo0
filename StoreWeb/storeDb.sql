@@ -1,23 +1,40 @@
 create database project0;
 
 create table Customers(
-	customerId int(8),
-    firstName varchar(20),
+	customerId int,
+    firstName varchar(20) not null,
     lastName varchar(20),
-    address varchar(130),
-    userName varchar(10),
-    pass_word varchar(15),
-    defaultStoreId int(8),
+    address varchar(130) not null,
+    userName varchar(10) not null,
+    pass_word varchar(15) not null,
     primary key(customerId),
-    FOREIGN KEY (defaultStoreId) REFERENCES Store(storeId),
-    regDate timestamp
+	regDate timestamp
+);
+
+
+create table DefaultStore
+(
+	defaultStoreId int not null,
+    storeId int not null,
+    userId int  not null,
+    regDate timestamp,
+    primary key(defaultStoreId),
+    foreign key(userId) references Customers(customerId)
 );
 
 create table Store(
-	storeId int(8),
+	storeId int,
     address varchar(130),
-    productId int(8),
-    primary key(storeId),
-    foreign key(productId) references Inventory(productId)
+    productId int,
+    primary key(storeId)
 );
 
+CREATE TABLE Orders (
+    orderNum INT,
+    userId INT,
+    total DOUBLE,
+    orderDate TIMESTAMP,
+    PRIMARY KEY (orderNum),
+    FOREIGN KEY (userId)
+        REFERENCES customers (customerId)
+);

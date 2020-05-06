@@ -1,4 +1,5 @@
 ﻿using Proj0.Dal;
+using Proj0.Pages;
 using System;
 using System.Linq;
 
@@ -9,9 +10,11 @@ namespace Proj0
         static void Main(string[] args)
         {
             CustomerDal customerDal = new CustomerDal();
+           
             using project0Context context = new project0Context();
             {
-                var products = context.Inventory
+                Cart cart = new Cart(context);
+                /*var products = context.Inventory
                     .ToList();
 
                 foreach (var product in products)
@@ -26,10 +29,10 @@ namespace Proj0
                 context.SaveChanges();
                 Console.WriteLine("Hello World!");*/
             }
-            Customers disl = customerDal.GetCustomerById(context, 1);
+           /* Customers disl = customerDal.GetCustomerById(context, 1);
 
             Console.WriteLine($"{disl.FirstName} {disl.LastName}");
-
+            */
         }
     }
 }

@@ -52,8 +52,9 @@ namespace Proj0.Dal
         /// <param name="context"></param>
         /// <param name="customerId"></param>
         private double sumTotal = 0.0;
-        public void AddProductToOrder(project0Context context, int customerId, int orderId)
+        public Orderlist AddProductToOrder(project0Context context, int customerId, int orderId)
         {
+            Orderlist orderlist = new Orderlist();
             Console.WriteLine("Enter Product name:");
             string productName = Console.ReadLine();
 
@@ -76,11 +77,12 @@ namespace Proj0.Dal
             }
             else
             {
-                
-                orderitem.MakeOrder(context,  productId, orderId, quantity);
+
+                orderlist= orderitem.MakeOrder(productId, orderId, quantity);
                 sumTotal += ProductPrice;
             }
 
+            return orderlist;
 
         }
 
@@ -101,8 +103,10 @@ namespace Proj0.Dal
 
         public void PlaceOrder(project0Context context)
         {
+            List<Orderlist> orderlists = new List<Orderlist>();
             int orderId = GetTheLastOrderId(context) + 1;
             Console.WriteLine("What is the customerId:");
+
             string cs = Console.ReadLine();
             int custId;
             if (!int.TryParse(cs, out custId))
@@ -112,13 +116,14 @@ namespace Proj0.Dal
             }
             else
             {
-                char stop;
+                char stop = 'A';
                 do
                 {
-                    AddProductToOrder(context, custId, orderId);
+                    orderlists.Add(AddProductToOrder(context, custId, orderId));
                     Console.WriteLine("Contnue shopping enter and letter or enter E to stop:");
                     string str = Console.ReadLine();
-                    stop = str[0];
+                    if(str != "")
+                        stop = str[0];
 
                 } while (stop != 'E');
 
@@ -129,8 +134,15 @@ namespace Proj0.Dal
                 UserId = custId,
                 Total = sumTotal,
                 OrderDate = DateTime.Now
-        };
+            };
+            context.Add(order);
             context.SaveChanges();
+            context.Add(orderlists);
+            context.SaveChanges();
+            /*foreach(Orderlist ol in orderlists)
+            {
+                context
+            }*/
         }
         /// <summary>
         /// Show the order history of a customer

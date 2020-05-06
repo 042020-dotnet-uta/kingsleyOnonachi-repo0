@@ -47,7 +47,7 @@ namespace Proj0.Dal
             
         }
 
-        public void MakeOrder(project0Context context, int productId, int orderId, int quantity)
+        public Orderlist MakeOrder(int productId, int orderId, int quantity)
         {
             Orderlist order = new Orderlist()
             {
@@ -56,8 +56,8 @@ namespace Proj0.Dal
                 Quantity = quantity,
                 OrderDate = DateTimeOffset.UtcNow
             };
-            context.Add(order);
-            context.SaveChanges();
+
+            return order;
         }
         
 

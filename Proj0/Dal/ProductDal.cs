@@ -117,6 +117,11 @@ namespace Proj0.Dal
         public double GetPriceOfProduct(project0Context context, int productId)
         {
             double listPrice;
+            if (productId <= 0)
+            {
+                Console.WriteLine("No such item here");
+                return -1;
+            }
             try
             {
                 var product = context.Inventory

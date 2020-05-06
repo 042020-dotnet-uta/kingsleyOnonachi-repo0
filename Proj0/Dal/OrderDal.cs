@@ -1,5 +1,4 @@
 ﻿
-using Org.BouncyCastle.Bcpg;
 using Proj0.store;
 using System;
 using System.Collections.Generic;
@@ -21,7 +20,12 @@ namespace Proj0.Dal
             get { return price; }
             set { price = value; }
         }
-
+        /// <summary>
+        /// This method displays customer's order history
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="orderId"></param>
+        /// <param name="customerId"></param>
         public void DisplayCustomerOrder(project0Context context, int orderId, int customerId)
         {
             if (orderId <= 0 || customerId <= 0)
@@ -85,7 +89,12 @@ namespace Proj0.Dal
             return orderlist;
 
         }
-
+        /// <summary>
+        /// This Method display the order of the day when given the date
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="orderDate"></param>
+        /// <returns></returns>
         public ICollection<Orders>GetDayOrders(project0Context context,DateTime orderDate)
         {
             var order = context.Orders

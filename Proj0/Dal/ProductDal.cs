@@ -12,6 +12,12 @@ namespace Proj0.Dal
         {
             
         }
+
+        /// <summary>
+        /// This method display all the products in a given store location 
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="storeId"></param>
         public void DisplayStoreProducts(project0Context context, int storeId)
         {
              var products = context.Inventory
@@ -25,6 +31,10 @@ namespace Proj0.Dal
             }
         }
 
+        /// <summary>
+        /// This method is use to add new product to stock of a given store location
+        /// </summary>
+        /// <param name="context"></param>
         public void AddNewProduct(project0Context context)
         {
 
@@ -61,7 +71,13 @@ namespace Proj0.Dal
 
            
         }
-
+        /// <summary>
+        /// This is use to get the quantity of products in stock
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="productid"></param>
+        /// <param name="storeId"></param>
+        /// <returns></returns>
         public int GetQuantityOfProduct(project0Context context, int productid, int storeId)
         {
             int qty = new int();
@@ -84,7 +100,13 @@ namespace Proj0.Dal
 
             return qty;
         }
-
+        /// <summary>
+        /// This is use to to add to exist product in stock
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="productId"></param>
+        /// <param name="storeId"></param>
+        /// <param name="quantity"></param>
         public void AddToExistProduct(project0Context context, int productId, int storeId, int quantity)
         {
             int qty = GetQuantityOfProduct(context,productId, storeId);
@@ -151,9 +173,9 @@ namespace Proj0.Dal
         {
             bool available = false;
             int qty = GetQuantityOfProduct(context, productId, storeId);
-            if (qty == -1)//checking if the product is in stock
+            if (qty < 1)//checking if the product is in stock
             {
-                Console.WriteLine("Run Out of Stock");
+                Console.WriteLine("Run Out of Stock");//
                 return false;
             }
             else
@@ -182,10 +204,10 @@ namespace Proj0.Dal
         /// <param name="request"></param>
         public void UpdateQuantityOfProduct(project0Context context, int storeId, int productId, int request)
         {
-            int quantityInstock = GetQuantityOfProduct(context, productId, storeId);
+            int quantityInstock = GetQuantityOfProduct(context, productId, storeId);//check the quantity of product in stock
             if (quantityInstock > request)
             {
-                quantityInstock -= request;
+                quantityInstock -= request;//reducing the quantity if there is enough product in the stock
             }
 
             var inventory = context.Inventory
@@ -195,7 +217,7 @@ namespace Proj0.Dal
             foreach (Inventory ts in inventory)//get the quantity part of the inventory and assigning it new value
             {
                 ts.Quantity = quantityInstock;
-                context.Inventory.Update(ts);
+                context.Inventory.Update(ts);//updating the database with new information
                 context.SaveChangesAsync();
             }
 
@@ -222,7 +244,7 @@ namespace Proj0.Dal
                 Console.WriteLine("No such product in stock now");
                 return -1;
             }
-            return inventory.InventoryId;
+            return inventory.InventoryId;//returning the result of the query
         }
 
     }

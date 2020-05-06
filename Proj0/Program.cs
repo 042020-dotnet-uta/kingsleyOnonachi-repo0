@@ -1,5 +1,6 @@
 ﻿using Proj0.Dal;
 using Proj0.Pages;
+using Proj0.store;
 using System;
 using System.Linq;
 
@@ -13,26 +14,9 @@ namespace Proj0
            
             using project0Context context = new project0Context();
             {
-                Cart cart = new Cart(context);
-                /*var products = context.Inventory
-                    .ToList();
-
-                foreach (var product in products)
-                {
-                    Console.WriteLine($"{product.Name} productId {product.ProductId}\n");
-                }
-
-                DefaultStoreDal def = new DefaultStoreDal();
-                def.GetAllCustomerOfStore(context, 1);
-                /*Customers customer = customerDal.addACustomer();
-                context.Customers.Add(customer);
-                context.SaveChanges();
-                Console.WriteLine("Hello World!");*/
+                Menu menu = new Menu();
+                menu.DisplayMenu();
             }
-           /* Customers disl = customerDal.GetCustomerById(context, 1);
-
-            Console.WriteLine($"{disl.FirstName} {disl.LastName}");
-            */
         }
     }
 }

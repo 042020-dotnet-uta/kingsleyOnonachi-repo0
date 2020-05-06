@@ -6,8 +6,6 @@ namespace Proj0.Pages
 {
     class Location
     {
-        
-        public project0Context context = new project0Context();
-        
+       
     }
 }

@@ -23,10 +23,10 @@ stages: # This stage will build the project
       - job: 'build'
         steps:
           - script: dotnet build 'Proj0/Proj0.sln'
-      - job: 'test' # this stage will run the tests
+      - job: 'run' # this stage will run the tests
         dependsOn: 'build' # requires that build succeed
         steps:
-          - script: dotnet test
+          - script: dotnet run
 
 # Gives it a unique name 
 name: '$(date:yyyMMdd)$(rev:rr)'

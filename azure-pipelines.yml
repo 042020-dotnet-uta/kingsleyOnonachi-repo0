@@ -11,7 +11,7 @@ trigger:
 # the type of VM you are going to use
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'window-latest'
 
 # Watch for PRs
 pr: none

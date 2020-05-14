@@ -1,34 +1,32 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+# What branch we are watching
 trigger:
-- master
+  - 'master'
+
+# the type of VM you are going to use
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+# Watch for PRs
+pr: none
 
-steps:
-- task: NuGetToolInstaller@1
+# the sequential steps to follow - build, run, test, deploy, etc...
+stages: # This stage will build the project
+  - stage:
+    jobs:
+      - job: 'build'
+        steps:
+          - script: dotnet build 'Proj0/Proj0.sln'
+      - job: 'test' # this stage will run the tests
+        dependsOn: 'build' # requires that build succeed
+        steps:
+          - script: dotnet test
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+# Gives it a unique name 
+name: '$(date:yyyMMdd)$(rev:rr)'

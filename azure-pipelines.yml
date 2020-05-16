@@ -9,7 +9,7 @@ trigger:
 
 # using ubuntu latest vmImage
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'window-latest'
 
 pr: 'none'
 

@@ -29,4 +29,4 @@ stages:
       - job: 'publish'
         dependsOn: 'build'
         steps:
-          - script: dotnet publish 'Proj0/Proj0/Proj0.sln'
+          - script: dotnet publish 'Proj0/Proj0.sln'

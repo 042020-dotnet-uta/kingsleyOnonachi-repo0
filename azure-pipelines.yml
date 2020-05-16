@@ -3,30 +3,30 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-
 # What branch we are watching
 trigger:
-  - 'master'
+- master
 
-# the type of VM you are going to use
-
+# using ubuntu latest vmImage
 pool:
-  vmImage: 'window-latest'
+  vmImage: 'ubuntu-latest'
 
-# Watch for PRs
-pr: none
+pr: 'none'
 
-# the sequential steps to follow - build, run, test, deploy, etc...
-stages: # This stage will build the project
+stages:
   - stage:
     jobs:
       - job: 'build'
         steps:
+          - task: SonarCloudPrepare@1
+            inputs:
+              SonarCloud: 'proj0'
+              organization: 'kingsleyononachi'
+              scannerMode: 'MSBuild'
+              projectKey: 'kingproj'
+              projectName: 'proj0'
           - script: dotnet build 'Proj0/Proj0.sln'
-      - job: 'run' # this stage will run the tests
-        dependsOn: 'build' # requires that build succeed
+      - job: 'publish'
+        dependsOn: 'build'
         steps:
-          - script: dotnet run
-
-# Gives it a unique name 
-name: '$(date:yyyMMdd)$(rev:rr)'
+          - script: dotnet publish 'Proj0/Proj0/Proj0.sln'
